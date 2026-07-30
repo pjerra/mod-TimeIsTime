@@ -58,3 +58,43 @@ TimeIsTime.SpeedRate = 1.0
 #####################################################################################################
 TimeIsTime.TimeStart = 0
 TimeIsTime.HourOffset = 0.0
+
+# RealignDate
+#####################################################################################################
+# Keep the in-game calendar date locked to the server's real date.
+#
+# With SpeedRate above 1.0 the client clock crosses midnight more often than the server does,
+# and each of those crossings advances the calendar day. Enabling this makes the module re-query
+# the server date every time the accelerated clock rolls over midnight and stamp that date onto
+# the client, so only a real midnight moves the calendar forward. The accelerated time of day is
+# untouched -- sunrise and sunset still cycle at SpeedRate.
+#
+# Example:  TimeIsTime.SpeedRate = 2.0 reaches midnight at server noon. That first turnover is
+#           re-stamped with the current (unchanged) server date, so the calendar holds. The second
+#           turnover lands at real midnight, where the server date has genuinely advanced, and the
+#           calendar moves with it.
+#
+# Note:     This also applies when TimeStart is set, so the client will show the server's real
+#           date rather than the date encoded in the TimeStart epoch. The time of day chosen by
+#           TimeStart and HourOffset is preserved.
+#
+# Settings: 0 = off, 1 = on
+# Default:  0
+# Example:  TimeIsTime.RealignDate = 0
+#####################################################################################################
+TimeIsTime.RealignDate = 0
+
+# RealignDateLookahead
+#####################################################################################################
+# Minutes added to the server clock when sampling which date to stamp on a turnover.
+#
+# Only used when TimeIsTime.RealignDate = 1. Without it, an accelerated midnight that lands a few
+# seconds before real midnight would be stamped with the day that is about to end, stalling the
+# calendar for a full extra cycle. Sampling slightly ahead makes that near-miss resolve to the day
+# the server is about to enter.
+#
+# Settings: Minutes, accepts fractional values. 0 disables the allowance.
+# Default:  1.0
+# Example:  TimeIsTime.RealignDateLookahead = 1.0
+#####################################################################################################
+TimeIsTime.RealignDateLookahead = 1.0
