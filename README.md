@@ -1,4 +1,8 @@
 # mod-TimeIsTime
+This fork carries NathanHandley's RealignDate change (dunjeon/mod-TimeIsTime#2) on top of the latest upstream and
+turns it on by default: the calendar date follows the server's real date while the day and night cycle runs at
+SpeedRate.
+
 TimeIsTime is a module for Azerothcore to adjust the day/night cycle speed in World of Warcraft 3.3.5a
 
 # Settings
