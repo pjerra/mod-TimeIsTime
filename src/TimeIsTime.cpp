@@ -118,7 +118,7 @@ public:
         stimeistime_speed_rate = sConfigMgr->GetOption<float>("TimeIsTime.SpeedRate", 1.0);
         stimeistime_hour_offset = sConfigMgr->GetOption<float>("TimeIsTime.HourOffset", 0.0);
         stimeistime_time_start = sConfigMgr->GetOption<int>("TimeIsTime.TimeStart", 0);
-        stimeistime_realign_date = sConfigMgr->GetOption<bool>("TimeIsTime.RealignDate", false);
+        stimeistime_realign_date = sConfigMgr->GetOption<bool>("TimeIsTime.RealignDate", true);
         stimeistime_realign_lookahead = sConfigMgr->GetOption<float>("TimeIsTime.RealignDateLookahead", 1.0);
     }
 };
